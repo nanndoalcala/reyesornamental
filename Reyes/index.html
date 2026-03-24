@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reyes Ornamental Supply | Wrought Iron in Albuquerque, NM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --iron:#2a2a2a;
+  --rust:#b5451b;
+  --sand:#e8dcc8;
+  --cream:#f5f0e8;
+  --warm-white:#faf8f4;
+  --copper:#c47a3b;
+  --patina:#4a6b5a;
+  --dark:#1a1a1a;
+  --text:#3a3a3a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-white);overflow-x:hidden}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:var(--iron);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.03) 59px,rgba(255,255,255,.03) 60px),
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.03) 59px,rgba(255,255,255,.03) 60px);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%,rgba(181,69,27,.15),transparent 70%);
+  pointer-events:none;
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;padding:120px 40px 80px;
+  width:100%;
+}
+.hero-tag{
+  font-family:'DM Sans',sans-serif;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:24px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-tag::before{content:'';width:40px;height:1px;background:var(--copper)}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,10vw,8rem);
+  line-height:.92;
+  color:var(--cream);
+  margin-bottom:24px;
+  max-width:800px;
+}
+.hero h1 span{
+  display:block;
+  background:linear-gradient(135deg,var(--rust),var(--copper));
+  -webkit-background-clip:text;-webkit-text-color:transparent;
+  background-clip:text;color:transparent;
+}
+.hero-sub{
+  font-size:1.15rem;line-height:1.7;color:rgba(232,220,200,.7);
+  max-width:520px;margin-bottom:40px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:16px 36px;
+  background:var(--rust);color:var(--cream);
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:all .3s ease;
+}
+.hero-cta:hover{background:var(--copper);transform:translateY(-2px);box-shadow:0 8px 30px rgba(181,69,27,.4)}
+.hero-cta svg{transition:transform .3s ease}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+/* Zia decoration */
+.zia-deco{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  width:clamp(200px,30vw,420px);height:clamp(200px,30vw,420px);
+  opacity:.06;pointer-events:none;z-index:1;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:all .4s ease;
+}
+nav.scrolled{
+  background:rgba(26,26,26,.95);backdrop-filter:blur(12px);
+  padding:14px 40px;box-shadow:0 2px 40px rgba(0,0,0,.3);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--cream);
+  text-decoration:none;letter-spacing:.05em;
+}
+.nav-logo em{font-style:normal;color:var(--rust)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(232,220,200,.7);text-decoration:none;
+  transition:color .3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--rust);transition:width .3s;
+}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-phone{
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;
+  color:var(--copper);text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ─── SECTIONS ─── */
+section{padding:100px 40px}
+.container{max-width:1200px;margin:0 auto}
+.section-tag{
+  font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--rust);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--rust)}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);
+  color:var(--iron);line-height:1.15;margin-bottom:20px;
+}
+
+/* ─── ABOUT ─── */
+.about{background:var(--warm-white)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  align-items:center;margin-top:40px;
+}
+.about-text p{font-size:1.05rem;line-height:1.8;color:var(--text);margin-bottom:20px}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;
+}
+.stat{
+  padding:24px;border:1px solid rgba(42,42,42,.1);
+  background:white;
+}
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--rust);
+  line-height:1;
+}
+.stat-label{font-size:.85rem;color:rgba(42,42,42,.6);margin-top:4px}
+.about-visual{
+  position:relative;height:500px;
+}
+.about-img{
+  position:absolute;
+  border:1px solid rgba(42,42,42,.08);
+}
+.about-img-1{
+  width:70%;top:0;right:0;height:60%;
+  background:var(--iron);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.about-img-2{
+  width:55%;bottom:0;left:0;height:50%;
+  background:var(--patina);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:20px 20px 60px rgba(0,0,0,.1);
+  overflow:hidden;
+}
+.img-placeholder{
+  color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;
+  text-align:center;padding:20px;
+}
+
+/* ─── SERVICES ─── */
+.services{background:var(--cream)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  margin-top:48px;
+}
+.service-card{
+  padding:40px 32px;
+  background:var(--warm-white);
+  border:1px solid rgba(42,42,42,.06);
+  transition:all .4s ease;
+  position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--rust),var(--copper));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+.service-icon{
+  width:48px;height:48px;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--rust);
+}
+.service-card h3{
+  font-family:'Playfair Display',serif;font-size:1.35rem;
+  color:var(--iron);margin-bottom:12px;
+}
+.service-card p{font-size:.95rem;line-height:1.7;color:rgba(42,42,42,.65)}
+
+/* ─── GALLERY ─── */
+.gallery{background:var(--dark);padding:100px 40px}
+.gallery .section-tag{color:var(--copper)}
+.gallery .section-title{color:var(--cream)}
+.gallery-desc{color:rgba(232,220,200,.6);font-size:1.05rem;max-width:550px;line-height:1.7;margin-bottom:48px}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:250px 250px;
+  gap:16px;
+}
+.gallery-item{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .4s ease;cursor:pointer;
+}
+.gallery-item:hover{border-color:var(--rust);transform:scale(1.02)}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-item .g-label{
+  color:rgba(232,220,200,.25);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+}
+
+/* ─── REVIEWS ─── */
+.reviews{background:var(--warm-white)}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  margin-top:48px;
+}
+.review-card{
+  padding:36px;background:white;
+  border:1px solid rgba(42,42,42,.06);
+  position:relative;
+}
+.review-card::before{
+  content:'\201C';position:absolute;top:12px;left:24px;
+  font-family:'Playfair Display',serif;font-size:4rem;
+  color:rgba(181,69,27,.12);line-height:1;
+}
+.review-stars{color:var(--copper);font-size:1rem;margin-bottom:16px;letter-spacing:2px}
+.review-text{font-size:.95rem;line-height:1.75;color:var(--text);margin-bottom:20px;font-style:italic}
+.review-author{font-weight:700;font-size:.85rem;color:var(--iron)}
+.review-badge{font-size:.75rem;color:rgba(42,42,42,.45);margin-top:2px}
+
+/* ─── CTA BANNER ─── */
+.cta-banner{
+  background:linear-gradient(135deg,var(--iron) 0%,#3a2a1e 100%);
+  padding:80px 40px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.02) 79px,rgba(255,255,255,.02) 80px),
+    repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.02) 79px,rgba(255,255,255,.02) 80px);
+}
+.cta-banner>*{position:relative;z-index:1}
+.cta-banner h2{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);
+  color:var(--cream);margin-bottom:16px;
+}
+.cta-banner p{color:rgba(232,220,200,.6);font-size:1.1rem;margin-bottom:36px}
+.cta-banner .hero-cta{display:inline-flex}
+
+/* ─── CONTACT ─── */
+.contact{background:var(--cream)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  margin-top:48px;
+}
+.contact-info-item{
+  display:flex;gap:16px;margin-bottom:32px;
+}
+.contact-info-item .ci-icon{
+  width:44px;height:44px;flex-shrink:0;
+  background:var(--warm-white);border:1px solid rgba(42,42,42,.08);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--rust);
+}
+.ci-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(42,42,42,.45);margin-bottom:4px}
+.ci-value{font-size:1.05rem;color:var(--iron);font-weight:500}
+.ci-value a{color:var(--iron);text-decoration:none;transition:color .3s}
+.ci-value a:hover{color:var(--rust)}
+
+.contact-map{
+  background:var(--iron);
+  min-height:350px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(42,42,42,.08);
+  overflow:hidden;
+}
+.contact-map iframe{width:100%;height:100%;min-height:350px;border:0;filter:grayscale(.4) contrast(1.1)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--dark);color:rgba(232,220,200,.4);
+  padding:40px;text-align:center;font-size:.85rem;
+}
+footer a{color:var(--copper);text-decoration:none}
+
+/* ─── ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ─── IRON PATTERN SVG ─── */
+.iron-scroll{
+  display:block;margin:0 auto;
+  opacity:.08;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .services-grid,.reviews-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-item:nth-child(1){grid-column:span 2}
+}
+@media(max-width:768px){
+  section{padding:60px 24px}
+  nav{padding:16px 24px}
+  .hero-content{padding:100px 24px 60px}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .about-visual{height:300px}
+  .services-grid,.reviews-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-item:nth-child(1){grid-column:span 2}
+  .nav-links{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:rgba(26,26,26,.97);backdrop-filter:blur(12px);
+    padding:8px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,.3);
+  }
+  .nav-links.show{display:flex}
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-links a{display:block;padding:16px 24px;font-size:.9rem}
+  .nav-phone{display:none}
+  .zia-deco{opacity:.03;right:-10%}
+  nav{position:relative}
+}
+
+/* Hamburger for mobile */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.nav-hamburger span{width:24px;height:2px;background:var(--cream);transition:all .3s}
+@media(max-width:768px){
+  .nav-hamburger{display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">REYES <em>ORNAMENTAL</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="quote.html" style="color:var(--copper)">Get a Quote</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:5052426014" class="nav-phone">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.91 10.6a16 16 0 0 0 6.49 6.49l1.42-1.42a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92Z"/></svg>
+    (505) 242-6014
+  </a>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">Albuquerque, New Mexico</div>
+    <h1>
+      Wrought Iron<br>
+      <span>Crafted by Hand</span>
+    </h1>
+    <p class="hero-sub">
+      Family-owned since day one. Metal gates, security doors, decorative ironwork, and custom fabrication — built with pride on Broadway Blvd.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Get a Free Estimate
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <!-- Zia Sun Symbol -->
+  <svg class="zia-deco" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="24" stroke="#e8dcc8" stroke-width="4"/>
+    <g stroke="#e8dcc8" stroke-width="4">
+      <line x1="100" y1="76" x2="100" y2="10"/>
+      <line x1="88" y1="76" x2="88" y2="30"/>
+      <line x1="112" y1="76" x2="112" y2="30"/>
+      <line x1="88" y1="30" x2="112" y2="30"/>
+
+      <line x1="100" y1="124" x2="100" y2="190"/>
+      <line x1="88" y1="124" x2="88" y2="170"/>
+      <line x1="112" y1="124" x2="112" y2="170"/>
+      <line x1="88" y1="170" x2="112" y2="170"/>
+
+      <line x1="76" y1="100" x2="10" y2="100"/>
+      <line x1="76" y1="88" x2="30" y2="88"/>
+      <line x1="76" y1="112" x2="30" y2="112"/>
+      <line x1="30" y1="88" x2="30" y2="112"/>
+
+      <line x1="124" y1="100" x2="190" y2="100"/>
+      <line x1="124" y1="88" x2="170" y2="88"/>
+      <line x1="124" y1="112" x2="170" y2="112"/>
+      <line x1="170" y1="88" x2="170" y2="112"/>
+    </g>
+  </svg>
+</section>
+
+<!-- DIVIDER -->
+<div style="background:var(--warm-white);padding:20px 0;text-align:center">
+  <svg class="iron-scroll" width="200" height="24" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 Q25 0 50 12 T100 12 T150 12 T200 12" stroke="#2a2a2a" stroke-width="1.5" fill="none"/>
+    <circle cx="100" cy="12" r="3" fill="#2a2a2a"/>
+  </svg>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-tag">Our Story</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title">A Family Legacy<br>in Iron &amp; Steel</h2>
+        <p>
+          Reyes Ornamental Supply has been a trusted name on Albuquerque's Broadway Boulevard for years. Founded and run by Dolores Reyes and family, we've built our reputation one gate, one railing, and one security door at a time.
+        </p>
+        <p>
+          From wrought iron porch enclosures to custom Zia sun symbols, every piece that leaves our shop carries the craftsmanship and care that only a family business can deliver. We don't just sell metal — we make it beautiful.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">4.7</div>
+            <div class="stat-label">Google Rating</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">43+</div>
+            <div class="stat-label">5-Star Reviews</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Family Owned</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">ABQ</div>
+            <div class="stat-label">Local & Proud</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-img about-img-1">
+          <div class="img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.3">
+              <circle cx="100" cy="100" r="20" stroke="currentColor" stroke-width="3"/>
+              <g stroke="currentColor" stroke-width="3">
+                <line x1="100" y1="80" x2="100" y2="30"/>
+                <line x1="90" y1="80" x2="90" y2="45"/>
+                <line x1="110" y1="80" x2="110" y2="45"/>
+                <line x1="90" y1="45" x2="110" y2="45"/>
+                <line x1="100" y1="120" x2="100" y2="170"/>
+                <line x1="90" y1="120" x2="90" y2="155"/>
+                <line x1="110" y1="120" x2="110" y2="155"/>
+                <line x1="90" y1="155" x2="110" y2="155"/>
+                <line x1="80" y1="100" x2="30" y2="100"/>
+                <line x1="80" y1="90" x2="45" y2="90"/>
+                <line x1="80" y1="110" x2="45" y2="110"/>
+                <line x1="45" y1="90" x2="45" y2="110"/>
+                <line x1="120" y1="100" x2="170" y2="100"/>
+                <line x1="120" y1="90" x2="155" y2="90"/>
+                <line x1="120" y1="110" x2="155" y2="110"/>
+                <line x1="155" y1="90" x2="155" y2="110"/>
+              </g>
+            </svg>
+            <br>Custom Zia Ironwork
+          </div>
+        </div>
+        <div class="about-img about-img-2">
+          <div class="img-placeholder">
+            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:.4"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg>
+            <br>Wrought Iron Gates
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Iron, Steel &amp; Everything In Between</h2>
+    <div class="services-grid" id="servicesGrid">
+      <!-- Loaded dynamically from Supabase -->
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-tag">Our Work</div>
+    <h2 class="section-title">Built to Last. Made to Impress.</h2>
+    <p class="gallery-desc">Every piece is fabricated right here in Albuquerque. From intricate Zia symbols to heavy-duty security gates, our work speaks for itself.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div>
+          <svg width="80" height="80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.2">
+            <circle cx="100" cy="100" r="20" stroke="#e8dcc8" stroke-width="3"/>
+            <g stroke="#e8dcc8" stroke-width="3">
+              <line x1="100" y1="80" x2="100" y2="30"/><line x1="90" y1="80" x2="90" y2="45"/>
+              <line x1="110" y1="80" x2="110" y2="45"/><line x1="90" y1="45" x2="110" y2="45"/>
+              <line x1="100" y1="120" x2="100" y2="170"/><line x1="90" y1="120" x2="90" y2="155"/>
+              <line x1="110" y1="120" x2="110" y2="155"/><line x1="90" y1="155" x2="110" y2="155"/>
+              <line x1="80" y1="100" x2="30" y2="100"/><line x1="80" y1="90" x2="45" y2="90"/>
+              <line x1="80" y1="110" x2="45" y2="110"/><line x1="45" y1="90" x2="45" y2="110"/>
+              <line x1="120" y1="100" x2="170" y2="100"/><line x1="120" y1="90" x2="155" y2="90"/>
+              <line x1="120" y1="110" x2="155" y2="110"/><line x1="155" y1="90" x2="155" y2="110"/>
+            </g>
+          </svg>
+          <div class="g-label" style="margin-top:12px">Custom Zia Symbols</div>
+        </div>
+      </div>
+      <div class="gallery-item"><div class="g-label">Security Doors</div></div>
+      <div class="gallery-item"><div class="g-label">Wrought Iron Gates</div></div>
+      <div class="gallery-item"><div class="g-label">Balcony Railings</div></div>
+      <div class="gallery-item"><div class="g-label">Porch Enclosures</div></div>
+      <div class="gallery-item"><div class="g-label">Window Guards</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-tag">Testimonials</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Good prices on steel. Very friendly staff.</p>
+        <div class="review-author">Matthew Garcia</div>
+        <div class="review-badge">Local Guide</div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">We had our home broken into on a Friday night. I called Reyes the next morning — he came over within an hour. Within two weeks we had our whole porch enclosed with wrought iron. Dolores and her brother were extremely concerned and wonderful. They make you feel like family.</p>
+        <div class="review-author">Veronica Valencia</div>
+        <div class="review-badge">Local Guide</div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">The owner, Dolores, was very helpful in showing me options for the repair, with her help I found a viable solution. She was pleasant, friendly and I will continue to use them for all my ornamental metal needs!</p>
+        <div class="review-author">Satisfied Customer</div>
+        <div class="review-badge">Google Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Transform Your Property?</h2>
+  <p>Call today for a free estimate — we'll come to you.</p>
+  <a href="tel:5052426014" class="hero-cta">
+    Call (505) 242-6014
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.91 10.6a16 16 0 0 0 6.49 6.49l1.42-1.42a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92Z"/></svg>
+  </a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Visit Our Shop</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-value"><a href="https://maps.google.com/?q=904+Broadway+Blvd+NE+Albuquerque+NM+87102" target="_blank">904 Broadway Blvd NE<br>Albuquerque, NM 87102</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.91 10.6a16 16 0 0 0 6.49 6.49l1.42-1.42a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92Z"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value"><a href="tel:5052426014">(505) 242-6014</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Hours</div>
+            <div class="ci-value">Mon – Fri: 8:00 AM – 5:00 PM<br>Sat – Sun: Closed</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Service Area</div>
+            <div class="ci-value">Albuquerque &amp; Surrounding Areas</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-map reveal reveal-delay-1">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263.5!2d-106.6432!3d35.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDA1JzE1LjAiTiAxMDbCsDM4JzM1LjUiVw!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Reyes Ornamental Supply. All rights reserved. | 904 Broadway Blvd NE, Albuquerque, NM 87102 | <a href="tel:5052426014">(505) 242-6014</a></p>
+</footer>
+
+<script>
+// =============================================
+// SUPABASE CONFIG — SAME AS QUOTE & ADMIN
+// =============================================
+const SUPABASE_URL = 'https://xsnztgdqrdbnnxqdhyrm.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhzbnp0Z2RxcmRibm54cWRoeXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTU2MDksImV4cCI6MjA4OTY5MTYwOX0.JwyvhBeVyuLwMMkwykiGHsYc069JEa4xD0nztxlUe_E';
+// =============================================
+
+// SVG icons mapped to category slugs
+const categoryIcons = {
+  'gates': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M8 8v12M16 8v12"/></svg>',
+  'security-doors': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>',
+  'railings': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+  'decorative': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  'materials': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 12h18M12 3v18"/></svg>',
+};
+
+// Fallback icon
+const defaultIcon = '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.7 20.2a2.12 2.12 0 01-3-3l6.73-6.73a6 6 0 017.94-7.94l-3.76 3.77z"/></svg>';
+
+// Fallback hardcoded services in case Supabase is unreachable
+const fallbackServices = [
+  { name: 'Metal Gates & Fencing', slug: 'gates', description: 'Custom wrought iron gates, driveway entries, garden fencing, and property perimeters — designed and fabricated to your exact specifications.' },
+  { name: 'Security Doors', slug: 'security-doors', description: 'Heavy-duty wrought iron security doors for patios, screen doors, and entryways. Protection that looks as good as it performs.' },
+  { name: 'Railings & Fencing', slug: 'railings', description: 'Complete wrought iron railings, handrails, and fencing. Durable and elegant ironwork designed for the New Mexico climate.' },
+  { name: 'Decorative Ironwork', slug: 'decorative', description: 'Zia sun symbols, ornamental wall art, balcony railings, window guards, and custom decorative pieces that celebrate New Mexico culture.' },
+  { name: 'Raw Materials & Supply', slug: 'materials', description: 'Steel, iron stock, balusters, scrolls, and components for fabricators and DIYers. Competitive prices on quality materials.' },
+];
+
+function renderServices(services) {
+  const grid = document.getElementById('servicesGrid');
+  const delays = ['', 'reveal-delay-1', 'reveal-delay-2'];
+
+  grid.innerHTML = services.map((cat, i) => `
+    <div class="service-card reveal ${delays[i % 3]}">
+      <div class="service-icon">
+        ${categoryIcons[cat.slug] || defaultIcon}
+      </div>
+      <h3>${cat.name}</h3>
+      <p>${cat.description}</p>
+    </div>
+  `).join('');
+
+  // Re-observe new elements for scroll reveal
+  const newReveals = grid.querySelectorAll('.reveal');
+  newReveals.forEach(el => observer.observe(el));
+}
+
+async function loadServices() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/categories?is_active=eq.true&order=sort_order`, {
+      cache: 'no-store',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      }
+    });
+    if (!res.ok) throw new Error('Failed to fetch');
+    const categories = await res.json();
+    if (categories.length > 0) {
+      renderServices(categories);
+    } else {
+      renderServices(fallbackServices);
+    }
+  } catch (err) {
+    // If Supabase is down, show fallback
+    renderServices(fallbackServices);
+  }
+}
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Load services from Supabase
+loadServices();
+</script>
+</body>
+</html>

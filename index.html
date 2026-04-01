@@ -10,12 +10,12 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --iron:#2a2a2a;
-  --rust:#b5451b;
+  --blue:#0096FF;
+  --blue-dark:#0077cc;
+  --blue-light:#33aaff;
   --sand:#e8dcc8;
   --cream:#f5f0e8;
   --warm-white:#faf8f4;
-  --copper:#c47a3b;
-  --patina:#4a6b5a;
   --dark:#1a1a1a;
   --text:#3a3a3a;
 }
@@ -40,7 +40,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
 }
 .hero::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 50%,rgba(181,69,27,.15),transparent 70%);
+  background:radial-gradient(ellipse at 70% 50%,rgba(0,150,255,.12),transparent 70%);
   pointer-events:none;
 }
 .hero-content{
@@ -50,10 +50,10 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
 }
 .hero-tag{
   font-family:'DM Sans',sans-serif;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--copper);margin-bottom:24px;
+  color:var(--blue-light);margin-bottom:24px;
   display:flex;align-items:center;gap:16px;
 }
-.hero-tag::before{content:'';width:40px;height:1px;background:var(--copper)}
+.hero-tag::before{content:'';width:40px;height:1px;background:var(--blue-light)}
 .hero h1{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(3.5rem,10vw,8rem);
@@ -64,8 +64,8 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
 }
 .hero h1 span{
   display:block;
-  background:linear-gradient(135deg,var(--rust),var(--copper));
-  -webkit-background-clip:text;-webkit-text-color:transparent;
+  background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  -webkit-background-clip:text;
   background-clip:text;color:transparent;
 }
 .hero-sub{
@@ -75,12 +75,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
 .hero-cta{
   display:inline-flex;align-items:center;gap:12px;
   padding:16px 36px;
-  background:var(--rust);color:var(--cream);
+  background:var(--blue);color:white;
   font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;
   text-decoration:none;border:none;cursor:pointer;
   transition:all .3s ease;
 }
-.hero-cta:hover{background:var(--copper);transform:translateY(-2px);box-shadow:0 8px 30px rgba(181,69,27,.4)}
+.hero-cta:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,150,255,.35)}
 .hero-cta svg{transition:transform .3s ease}
 .hero-cta:hover svg{transform:translateX(4px)}
 
@@ -106,8 +106,8 @@ nav.scrolled{
   font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--cream);
   text-decoration:none;letter-spacing:.05em;
 }
-.nav-logo em{font-style:normal;color:var(--rust)}
-.nav-links{display:flex;gap:32px;list-style:none}
+.nav-logo em{font-style:normal;color:var(--blue-light)}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
 .nav-links a{
   font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(232,220,200,.7);text-decoration:none;
@@ -115,13 +115,13 @@ nav.scrolled{
 }
 .nav-links a::after{
   content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--rust);transition:width .3s;
+  background:var(--blue);transition:width .3s;
 }
 .nav-links a:hover{color:var(--cream)}
 .nav-links a:hover::after{width:100%}
 .nav-phone{
   font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;
-  color:var(--copper);text-decoration:none;
+  color:var(--blue-light);text-decoration:none;
   display:flex;align-items:center;gap:8px;
 }
 
@@ -130,10 +130,10 @@ section{padding:100px 40px}
 .container{max-width:1200px;margin:0 auto}
 .section-tag{
   font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--rust);margin-bottom:16px;
+  color:var(--blue);margin-bottom:16px;
   display:flex;align-items:center;gap:12px;
 }
-.section-tag::before{content:'';width:30px;height:1px;background:var(--rust)}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--blue)}
 .section-title{
   font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);
   color:var(--iron);line-height:1.15;margin-bottom:20px;
@@ -154,7 +154,7 @@ section{padding:100px 40px}
   background:white;
 }
 .stat-num{
-  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--rust);
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--blue);
   line-height:1;
 }
 .stat-label{font-size:.85rem;color:rgba(42,42,42,.6);margin-top:4px}
@@ -173,7 +173,7 @@ section{padding:100px 40px}
 }
 .about-img-2{
   width:55%;bottom:0;left:0;height:50%;
-  background:var(--patina);
+  background:#1a3a5c;
   display:flex;align-items:center;justify-content:center;
   box-shadow:20px 20px 60px rgba(0,0,0,.1);
   overflow:hidden;
@@ -183,44 +183,77 @@ section{padding:100px 40px}
   text-align:center;padding:20px;
 }
 
-/* ─── SERVICES ─── */
-.services{background:var(--cream)}
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
-  margin-top:48px;
+
+
+/* ─── INVENTORY ─── */
+.inventory{background:var(--warm-white)}
+.inventory-intro{
+  font-size:1.05rem;line-height:1.8;color:var(--text);
+  max-width:620px;margin-bottom:48px;
 }
-.service-card{
-  padding:40px 32px;
-  background:var(--warm-white);
-  border:1px solid rgba(42,42,42,.06);
-  transition:all .4s ease;
-  position:relative;overflow:hidden;
+.inv-categories{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.inv-cat{
+  border:1px solid rgba(0,150,255,.15);
+  background:white;
+  overflow:hidden;
+  transition:box-shadow .3s;
 }
-.service-card::before{
-  content:'';position:absolute;top:0;left:0;width:100%;height:3px;
-  background:linear-gradient(90deg,var(--rust),var(--copper));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s ease;
+.inv-cat:hover{box-shadow:0 4px 20px rgba(0,150,255,.08)}
+.inv-cat-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;cursor:pointer;
+  user-select:none;
+  transition:background .2s;
 }
-.service-card:hover::before{transform:scaleX(1)}
-.service-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
-}
-.service-icon{
-  width:48px;height:48px;margin-bottom:24px;
+.inv-cat-header:hover{background:#f0f6ff}
+.inv-cat-header.open{background:#f0f6ff;border-bottom:1px solid rgba(0,150,255,.12)}
+.inv-cat-left{display:flex;align-items:center;gap:16px}
+.inv-cat-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--blue-light));
   display:flex;align-items:center;justify-content:center;
-  color:var(--rust);
+  color:white;flex-shrink:0;
 }
-.service-card h3{
-  font-family:'Playfair Display',serif;font-size:1.35rem;
-  color:var(--iron);margin-bottom:12px;
+.inv-cat-name{
+  font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--iron);
 }
-.service-card p{font-size:.95rem;line-height:1.7;color:rgba(42,42,42,.65)}
+.inv-cat-count{
+  font-size:.8rem;color:rgba(42,42,42,.45);margin-top:2px;
+}
+.inv-cat-arrow{
+  color:var(--blue);transition:transform .3s ease;
+}
+.inv-cat-header.open .inv-cat-arrow{transform:rotate(180deg)}
+.inv-cat-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s cubic-bezier(.16,1,.3,1);
+}
+.inv-cat-body.open{max-height:800px}
+.inv-items-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1px;background:rgba(0,150,255,.08);
+  border-top:1px solid rgba(0,150,255,.08);
+}
+.inv-item{
+  background:white;padding:16px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.inv-item-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--blue);flex-shrink:0;opacity:.5;
+}
+.inv-item-name{font-size:.9rem;color:var(--iron);font-weight:500}
+.inv-item-detail{font-size:.78rem;color:rgba(42,42,42,.45);margin-top:2px}
+.inv-note{
+  margin-top:24px;padding:20px 24px;
+  background:#f0f6ff;border-left:3px solid var(--blue);
+  font-size:.9rem;color:rgba(42,42,42,.65);line-height:1.6;
+}
+.inv-note strong{color:var(--blue)}
 
 /* ─── GALLERY ─── */
 .gallery{background:var(--dark);padding:100px 40px}
-.gallery .section-tag{color:var(--copper)}
+.gallery .section-tag{color:var(--blue-light)}
 .gallery .section-title{color:var(--cream)}
 .gallery-desc{color:rgba(232,220,200,.6);font-size:1.05rem;max-width:550px;line-height:1.7;margin-bottom:48px}
 .gallery-grid{
@@ -236,7 +269,7 @@ section{padding:100px 40px}
   display:flex;align-items:center;justify-content:center;
   transition:all .4s ease;cursor:pointer;
 }
-.gallery-item:hover{border-color:var(--rust);transform:scale(1.02)}
+.gallery-item:hover{border-color:var(--blue);transform:scale(1.02)}
 .gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
 .gallery-item .g-label{
   color:rgba(232,220,200,.25);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
@@ -256,16 +289,16 @@ section{padding:100px 40px}
 .review-card::before{
   content:'\201C';position:absolute;top:12px;left:24px;
   font-family:'Playfair Display',serif;font-size:4rem;
-  color:rgba(181,69,27,.12);line-height:1;
+  color:rgba(0,150,255,.1);line-height:1;
 }
-.review-stars{color:var(--copper);font-size:1rem;margin-bottom:16px;letter-spacing:2px}
+.review-stars{color:var(--blue);font-size:1rem;margin-bottom:16px;letter-spacing:2px}
 .review-text{font-size:.95rem;line-height:1.75;color:var(--text);margin-bottom:20px;font-style:italic}
 .review-author{font-weight:700;font-size:.85rem;color:var(--iron)}
 .review-badge{font-size:.75rem;color:rgba(42,42,42,.45);margin-top:2px}
 
 /* ─── CTA BANNER ─── */
 .cta-banner{
-  background:linear-gradient(135deg,var(--iron) 0%,#3a2a1e 100%);
+  background:linear-gradient(135deg,var(--iron) 0%,#0a1a2e 100%);
   padding:80px 40px;text-align:center;
   position:relative;overflow:hidden;
 }
@@ -284,7 +317,7 @@ section{padding:100px 40px}
 .cta-banner .hero-cta{display:inline-flex}
 
 /* ─── CONTACT ─── */
-.contact{background:var(--cream)}
+.contact{background:#f0f6ff}
 .contact-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:60px;
   margin-top:48px;
@@ -294,30 +327,49 @@ section{padding:100px 40px}
 }
 .contact-info-item .ci-icon{
   width:44px;height:44px;flex-shrink:0;
-  background:var(--warm-white);border:1px solid rgba(42,42,42,.08);
+  background:white;border:1px solid rgba(0,150,255,.15);
   display:flex;align-items:center;justify-content:center;
-  color:var(--rust);
+  color:var(--blue);
 }
 .ci-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(42,42,42,.45);margin-bottom:4px}
 .ci-value{font-size:1.05rem;color:var(--iron);font-weight:500}
 .ci-value a{color:var(--iron);text-decoration:none;transition:color .3s}
-.ci-value a:hover{color:var(--rust)}
+.ci-value a:hover{color:var(--blue)}
 
 .contact-map{
   background:var(--iron);
   min-height:350px;
   display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(42,42,42,.08);
+  border:1px solid rgba(0,150,255,.1);
   overflow:hidden;
 }
 .contact-map iframe{width:100%;height:100%;min-height:350px;border:0;filter:grayscale(.4) contrast(1.1)}
 
 /* ─── FOOTER ─── */
+.contact-form{margin-top:32px}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--iron);margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(42,42,42,.5);display:block;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:12px 16px;border:2px solid rgba(42,42,42,.08);
+  font-family:'DM Sans',sans-serif;font-size:.95rem;background:white;
+  outline:none;transition:border-color .3s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{
+  padding:14px 32px;background:var(--blue);color:white;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;
+  border:none;cursor:pointer;transition:all .3s;
+}
+.form-submit:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.form-success{display:none;padding:20px;background:rgba(0,150,255,.08);border:1px solid rgba(0,150,255,.2);color:var(--blue-dark);font-size:.95rem;margin-top:16px}
+
 footer{
   background:var(--dark);color:rgba(232,220,200,.4);
   padding:40px;text-align:center;font-size:.85rem;
 }
-footer a{color:var(--copper);text-decoration:none}
+footer a{color:var(--blue-light);text-decoration:none}
 
 /* ─── ANIMATIONS ─── */
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
@@ -361,6 +413,10 @@ footer a{color:var(--copper);text-decoration:none}
   .nav-phone{display:none}
   .zia-deco{opacity:.03;right:-10%}
   nav{position:relative}
+  .inv-items-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .inv-items-grid{grid-template-columns:1fr}
 }
 
 /* Hamburger for mobile */
@@ -378,10 +434,9 @@ footer a{color:var(--copper);text-decoration:none}
   <a href="#" class="nav-logo">REYES <em>ORNAMENTAL</em></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#inventory">Inventory</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#reviews">Reviews</a></li>
-    <li><a href="quote.html" style="color:var(--copper)">Get a Quote</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="tel:5052426014" class="nav-phone">
@@ -398,11 +453,11 @@ footer a{color:var(--copper);text-decoration:none}
   <div class="hero-content">
     <div class="hero-tag">Albuquerque, New Mexico</div>
     <h1>
-      Wrought Iron<br>
-      <span>Crafted by Hand</span>
+      Steel &amp; Ornamental<br>
+      <span>Supply in ABQ</span>
     </h1>
     <p class="hero-sub">
-      Family-owned since day one. Metal gates, security doors, decorative ironwork, and custom fabrication — built with pride on Broadway Blvd.
+      Family-owned since day one. Steel stock, gates, security doors, decorative metalwork, and minor fabrication — built with pride on Broadway Blvd.
     </p>
     <a href="#contact" class="hero-cta">
       Get a Free Estimate
@@ -417,17 +472,14 @@ footer a{color:var(--copper);text-decoration:none}
       <line x1="88" y1="76" x2="88" y2="30"/>
       <line x1="112" y1="76" x2="112" y2="30"/>
       <line x1="88" y1="30" x2="112" y2="30"/>
-
       <line x1="100" y1="124" x2="100" y2="190"/>
       <line x1="88" y1="124" x2="88" y2="170"/>
       <line x1="112" y1="124" x2="112" y2="170"/>
       <line x1="88" y1="170" x2="112" y2="170"/>
-
       <line x1="76" y1="100" x2="10" y2="100"/>
       <line x1="76" y1="88" x2="30" y2="88"/>
       <line x1="76" y1="112" x2="30" y2="112"/>
       <line x1="30" y1="88" x2="30" y2="112"/>
-
       <line x1="124" y1="100" x2="190" y2="100"/>
       <line x1="124" y1="88" x2="170" y2="88"/>
       <line x1="124" y1="112" x2="170" y2="112"/>
@@ -450,12 +502,12 @@ footer a{color:var(--copper);text-decoration:none}
     <div class="section-tag">Our Story</div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <h2 class="section-title">A Family Legacy<br>in Iron &amp; Steel</h2>
+        <h2 class="section-title">A Family Legacy<br>in Steel &amp; Metal</h2>
         <p>
           Reyes Ornamental Supply has been a trusted name on Albuquerque's Broadway Boulevard for years. Founded and run by Dolores Reyes and family, we've built our reputation one gate, one railing, and one security door at a time.
         </p>
         <p>
-          From wrought iron porch enclosures to custom Zia sun symbols, every piece that leaves our shop carries the craftsmanship and care that only a family business can deliver. We don't just sell metal — we make it beautiful.
+          From steel porch enclosures to custom Zia sun symbols, every piece that leaves our shop carries the craftsmanship and care that only a family business can deliver. We carry a wide selection of steel stock — and keep it in stock.
         </p>
         <div class="about-stats">
           <div class="stat">
@@ -472,7 +524,7 @@ footer a{color:var(--copper);text-decoration:none}
           </div>
           <div class="stat">
             <div class="stat-num">ABQ</div>
-            <div class="stat-label">Local & Proud</div>
+            <div class="stat-label">Local &amp; Proud</div>
           </div>
         </div>
       </div>
@@ -514,13 +566,239 @@ footer a{color:var(--copper);text-decoration:none}
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
+
+
+<!-- INVENTORY -->
+<section class="inventory" id="inventory">
   <div class="container">
-    <div class="section-tag">What We Do</div>
-    <h2 class="section-title">Iron, Steel &amp; Everything In Between</h2>
-    <div class="services-grid" id="servicesGrid">
-      <!-- Loaded dynamically from Supabase -->
+    <div class="section-tag">In Stock</div>
+    <h2 class="section-title">Browse Our Inventory</h2>
+    <p class="inventory-intro">We keep a wide variety of ornamental iron and steel materials in stock at our Broadway location. Click any category below to see what we carry. Call us for availability and pricing.</p>
+
+    <div class="inv-categories" id="invCategories">
+
+      <!-- TUBING & PIPE -->
+      <div class="inv-cat reveal">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="2"/><path d="M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Tubing &amp; Pipe</div>
+              <div class="inv-cat-count">Square, Round, Rectangular</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Square Tubing</div><div class="inv-item-detail">½" – 2" various wall</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Round Tubing</div><div class="inv-item-detail">½" – 2" OD</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Rectangular Tubing</div><div class="inv-item-detail">1×2, 1×3, 2×3</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Schedule 40 Pipe</div><div class="inv-item-detail">¾" – 2" diameter</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">EMT Conduit</div><div class="inv-item-detail">½" – 2"</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">DOM Tubing</div><div class="inv-item-detail">Drawn over mandrel</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLAT BAR & STRAP -->
+      <div class="inv-cat reveal reveal-delay-1">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="4" rx="1"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Flat Bar &amp; Strap</div>
+              <div class="inv-cat-count">Steel flat stock in many sizes</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1/8" × 1" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1/8" × 1½" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">3/16" × 1" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">3/16" × 2" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">¼" × 1" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">¼" × 2" Flat Bar</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Strap Iron Rolls</div><div class="inv-item-detail">Various widths</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Stainless Flat Bar</div><div class="inv-item-detail">Available on request</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANGLE IRON & CHANNEL -->
+      <div class="inv-cat reveal reveal-delay-2">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 20V4h16"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Angle Iron &amp; Channel</div>
+              <div class="inv-cat-count">Structural shapes</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1" × 1" Angle</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1½" × 1½" Angle</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">2" × 2" Angle</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Unequal Leg Angle</div><div class="inv-item-detail">Various combos</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">C-Channel 2"</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">C-Channel 3"</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BALUSTERS & PICKETS -->
+      <div class="inv-cat reveal">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 3v18M12 3v18M18 3v18"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Balusters &amp; Pickets</div>
+              <div class="inv-cat-count">Twisted, plain, and decorative</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">½" Plain Square Baluster</div><div class="inv-item-detail">Multiple lengths</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">½" Twist Baluster</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">½" Hammered Baluster</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">⅝" Plain Baluster</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">¾" Baluster</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flat Pickets</div><div class="inv-item-detail">Spear or blunt tip</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Basket Twist Insert</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Double Twist Insert</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECORATIVE SCROLLS & CASTINGS -->
+      <div class="inv-cat reveal reveal-delay-1">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.58-9 8s4.03 8 9 8h.5M19 15l-3 3 3 3"/><path d="M22 18h-6"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Decorative Scrolls &amp; Castings</div>
+              <div class="inv-cat-count">Ornamental add-ons and embellishments</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Single Scroll</div><div class="inv-item-detail">Various sizes</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Double Scroll (S-Scroll)</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">C-Scroll</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Rosette Castings</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Fleur de Lis Tips</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Spear Tips</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Ball Finials</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Leaf Ornaments</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHEET METAL & PLATE -->
+      <div class="inv-cat reveal reveal-delay-2">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Sheet Metal &amp; Plate</div>
+              <div class="inv-cat-count">Cold-rolled, galvanized, expanded</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Cold-Rolled Sheet</div><div class="inv-item-detail">16–10 ga</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Hot-Rolled Plate</div><div class="inv-item-detail">¼" – ½"</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Galvanized Sheet</div><div class="inv-item-detail">Various gauges</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Expanded Metal</div><div class="inv-item-detail">Standard &amp; flattened</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Diamond Plate</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Perforated Sheet</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GATE & FENCE HARDWARE -->
+      <div class="inv-cat reveal">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Gate &amp; Fence Hardware</div>
+              <div class="inv-cat-count">Hinges, latches, posts, and more</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Weld-On Hinges</div><div class="inv-item-detail">Heavy, medium, light duty</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Adjustable Hinges</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Cane Bolt</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Latch Sets</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Drop Rods</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Gate Posts</div><div class="inv-item-detail">2" – 3" square</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Post Caps</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Floor Flanges</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WELDING SUPPLIES -->
+      <div class="inv-cat reveal reveal-delay-1">
+        <div class="inv-cat-header" onclick="toggleCat(this)">
+          <div class="inv-cat-left">
+            <div class="inv-cat-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div class="inv-cat-name">Welding &amp; Finishing Supplies</div>
+              <div class="inv-cat-count">Paint, primer, wire, consumables</div>
+            </div>
+          </div>
+          <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="inv-cat-body">
+          <div class="inv-items-grid">
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flat Black Spray Paint</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Rust-Inhibiting Primer</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Zinc Primer Spray</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">MIG Wire (ER70S-6)</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flux-Core Wire</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Grinding Discs</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Cut-Off Wheels</div></div></div>
+            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Wire Brushes</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="inv-note reveal">
+      <strong>Note:</strong> Inventory changes regularly. Call us at <strong>(505) 242-6014</strong> or stop by our shop at 904 Broadway Blvd NE to confirm availability. We also offer minor fabrication and can source specialty items on request. Stainless steel and aluminum available — ask us!
     </div>
   </div>
 </section>
@@ -628,7 +906,7 @@ footer a{color:var(--copper);text-decoration:none}
           </div>
           <div>
             <div class="ci-label">Hours</div>
-            <div class="ci-value">Mon – Fri: 8:00 AM – 5:00 PM<br>Sat – Sun: Closed</div>
+            <div class="ci-value">Mon – Fri: 8:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 12:00 PM<br>Sunday: Closed</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -641,9 +919,48 @@ footer a{color:var(--copper);text-decoration:none}
           </div>
         </div>
       </div>
-      <div class="contact-map reveal reveal-delay-1">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263.5!2d-106.6432!3d35.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDA1JzE1LjAiTiAxMDbCsDM4JzM1LjUiVw!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form reveal">
+        <h3>Send Us a Message</h3>
+        <div id="contactForm">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="cfName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="cfEmail" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone (optional)</label>
+            <input type="tel" id="cfPhone" placeholder="(505) 555-0123">
+          </div>
+          <div class="form-group">
+            <label>What do you need?</label>
+            <select id="cfService">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Gate">Gate (Estimate / Quote)</option>
+              <option value="Security Door">Security Door</option>
+              <option value="Railing / Fencing">Railing / Fencing</option>
+              <option value="Decorative Ironwork">Decorative Ironwork</option>
+              <option value="Raw Materials">Raw Materials / Supply</option>
+              <option value="Repair / Restoration">Repair / Restoration</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="cfMessage" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitContact()">Send Message</button>
+          <div class="form-success" id="formSuccess">Thank you! Your message has been sent. We'll get back to you soon.</div>
+        </div>
       </div>
+
+    </div>
+    <div class="contact-map reveal reveal-delay-1">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263.5!2d-106.6432!3d35.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDA1JzE1LjAiTiAxMDbCsDM4JzM1LjUiVw!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -655,73 +972,19 @@ footer a{color:var(--copper);text-decoration:none}
 
 <script>
 // =============================================
-// SUPABASE CONFIG — SAME AS QUOTE & ADMIN
+// SUPABASE CONFIG
 // =============================================
 const SUPABASE_URL = 'https://xsnztgdqrdbnnxqdhyrm.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhzbnp0Z2RxcmRibm54cWRoeXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTU2MDksImV4cCI6MjA4OTY5MTYwOX0.JwyvhBeVyuLwMMkwykiGHsYc069JEa4xD0nztxlUe_E';
-// =============================================
 
-// SVG icons mapped to category slugs
-const categoryIcons = {
-  'gates': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M8 8v12M16 8v12"/></svg>',
-  'security-doors': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>',
-  'railings': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
-  'decorative': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
-  'materials': '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 12h18M12 3v18"/></svg>',
-};
-
-// Fallback icon
-const defaultIcon = '<svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.7 20.2a2.12 2.12 0 01-3-3l6.73-6.73a6 6 0 017.94-7.94l-3.76 3.77z"/></svg>';
-
-// Fallback hardcoded services in case Supabase is unreachable
-const fallbackServices = [
-  { name: 'Metal Gates & Fencing', slug: 'gates', description: 'Custom wrought iron gates, driveway entries, garden fencing, and property perimeters — designed and fabricated to your exact specifications.' },
-  { name: 'Security Doors', slug: 'security-doors', description: 'Heavy-duty wrought iron security doors for patios, screen doors, and entryways. Protection that looks as good as it performs.' },
-  { name: 'Railings & Fencing', slug: 'railings', description: 'Complete wrought iron railings, handrails, and fencing. Durable and elegant ironwork designed for the New Mexico climate.' },
-  { name: 'Decorative Ironwork', slug: 'decorative', description: 'Zia sun symbols, ornamental wall art, balcony railings, window guards, and custom decorative pieces that celebrate New Mexico culture.' },
-  { name: 'Raw Materials & Supply', slug: 'materials', description: 'Steel, iron stock, balusters, scrolls, and components for fabricators and DIYers. Competitive prices on quality materials.' },
-];
-
-function renderServices(services) {
-  const grid = document.getElementById('servicesGrid');
-  const delays = ['', 'reveal-delay-1', 'reveal-delay-2'];
-
-  grid.innerHTML = services.map((cat, i) => `
-    <div class="service-card reveal ${delays[i % 3]}">
-      <div class="service-icon">
-        ${categoryIcons[cat.slug] || defaultIcon}
-      </div>
-      <h3>${cat.name}</h3>
-      <p>${cat.description}</p>
-    </div>
-  `).join('');
-
-  // Re-observe new elements for scroll reveal
-  const newReveals = grid.querySelectorAll('.reveal');
-  newReveals.forEach(el => observer.observe(el));
+// Inventory category toggle
+function toggleCat(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
 }
 
-async function loadServices() {
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/categories?is_active=eq.true&order=sort_order`, {
-      cache: 'no-store',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      }
-    });
-    if (!res.ok) throw new Error('Failed to fetch');
-    const categories = await res.json();
-    if (categories.length > 0) {
-      renderServices(categories);
-    } else {
-      renderServices(fallbackServices);
-    }
-  } catch (err) {
-    // If Supabase is down, show fallback
-    renderServices(fallbackServices);
-  }
-}
 
 // Nav scroll effect
 const nav = document.getElementById('nav');
@@ -732,16 +995,47 @@ window.addEventListener('scroll', () => {
 // Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Load services from Supabase
-loadServices();
+var FORMSPREE_ID = 'xwvwpqgg';
+
+function submitContact() {
+  var name = document.getElementById('cfName').value.trim();
+  var email = document.getElementById('cfEmail').value.trim();
+  var phone = document.getElementById('cfPhone').value.trim();
+  var service = document.getElementById('cfService').value;
+  var message = document.getElementById('cfMessage').value.trim();
+
+  if (!name || !email) { alert('Please fill in your name and email.'); return; }
+
+  var btn = document.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name, email, phone: phone || 'Not provided', service, message: message || 'No message provided', _subject: 'New inquiry from ' + name + ' — ' + service })
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('formSuccess').style.display = 'block';
+      ['cfName','cfEmail','cfPhone','cfMessage'].forEach(id => document.getElementById(id).value = '');
+      btn.textContent = 'Sent!';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; }, 3000);
+    } else throw new Error();
+  })
+  .catch(() => {
+    alert('Failed to send. Please call us at (505) 242-6014 instead.');
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+}
+
+
 </script>
 </body>
 </html>

@@ -287,7 +287,7 @@ section{padding:100px 40px}
   max-height:0;overflow:hidden;
   transition:max-height .4s cubic-bezier(.16,1,.3,1);
 }
-.inv-cat-body.open{max-height:800px}
+.inv-cat-body.open{max-height:1400px}
 .inv-items-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
   gap:1px;background:rgba(0,150,255,.08);
@@ -295,8 +295,11 @@ section{padding:100px 40px}
 }
 .inv-item{
   background:white;padding:16px 20px;
-  display:flex;align-items:center;gap:12px;
+  display:flex;flex-direction:column;gap:0;
+  cursor:default;transition:background .2s;
 }
+.inv-item.has-sizes{cursor:pointer}
+.inv-item.has-sizes:hover{background:#f5faff}
 .inv-item-dot{
   width:8px;height:8px;border-radius:50%;
   background:var(--blue);flex-shrink:0;opacity:.5;
@@ -309,6 +312,31 @@ section{padding:100px 40px}
   font-size:.9rem;color:rgba(42,42,42,.65);line-height:1.6;
 }
 .inv-note strong{color:var(--blue)}
+
+/* ─── INLINE SIZE EXPAND ON ITEM CARDS ─── */
+.inv-item-top{display:flex;align-items:center;gap:12px}
+.inv-item-chevron{
+  margin-left:auto;color:var(--blue);opacity:.5;
+  transition:transform .25s ease, opacity .2s;flex-shrink:0;
+}
+.inv-item.open .inv-item-chevron{transform:rotate(180deg);opacity:1}
+.inv-item-sizes{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s cubic-bezier(.16,1,.3,1);
+}
+.inv-item.open .inv-item-sizes{max-height:300px}
+.inv-size-tags{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding:10px 0 4px 20px;
+}
+.inv-size-tag{
+  padding:3px 10px;
+  border:1px solid rgba(0,150,255,.3);
+  background:#f0f7ff;
+  font-size:.78rem;color:var(--blue-dark);font-weight:600;
+  border-radius:2px;
+  font-family:'DM Sans',sans-serif;
+}
 
 /* ─── INVENTORY CATEGORY THUMBNAILS ─── */
 .inv-cat-thumb{
@@ -671,16 +699,34 @@ footer a{color:var(--blue-light);text-decoration:none}
             <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </div>
         </div>
-        <div class="inv-cat-body">
+                <div class="inv-cat-body">
           <div class="inv-items-grid">
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Square Tubing</div><div class="inv-item-detail">½" – 2" various wall</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Round Tubing</div><div class="inv-item-detail">½" – 2" OD</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Rectangular Tubing</div><div class="inv-item-detail">1×2, 1×3, 2×3</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Schedule 40 Pipe</div><div class="inv-item-detail">¾" – 2" diameter</div></div></div>
-
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Square Tubing 16G</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1/2"</span><span class="inv-size-tag">5/8"</span><span class="inv-size-tag">3/4"</span><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">1×2</span><span class="inv-size-tag">1/2×1</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Square Tubing 14G</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">1×2 (3-20')</span><span class="inv-size-tag">1×2 (3-24')</span><span class="inv-size-tag">1×2 (4-20')</span><span class="inv-size-tag">1×2 (4-24')</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Rectangular Tubing</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1×3 16g</span><span class="inv-size-tag">1×3 14g</span><span class="inv-size-tag">1½×3</span><span class="inv-size-tag">1×4 16g</span><span class="inv-size-tag">1½×1 16g</span><span class="inv-size-tag">1½×¾ 16g</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Round Bar</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">3/16"</span><span class="inv-size-tag">1/4"</span><span class="inv-size-tag">5/16"</span><span class="inv-size-tag">3/8"</span><span class="inv-size-tag">1/2"</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Expanded Metal</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">¾-4×8 #13</span><span class="inv-size-tag">½-4×8 #13</span><span class="inv-size-tag">¾-4×8 #9</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Pipe SCH 10</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1 1/4" SCH 10</span><span class="inv-size-tag">1 1/2" SCH 10</span></div></div>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- FLAT BAR & STRAP -->
       <div class="inv-cat reveal reveal-delay-1">
@@ -699,19 +745,30 @@ footer a{color:var(--blue-light);text-decoration:none}
             <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </div>
         </div>
-        <div class="inv-cat-body">
+                <div class="inv-cat-body">
           <div class="inv-items-grid">
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1/8" × 1" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1/8" × 1½" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">3/16" × 1" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">3/16" × 2" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">¼" × 1" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">¼" × 2" Flat Bar</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Strap Iron Rolls</div><div class="inv-item-detail">Various widths</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Stainless Flat Bar</div><div class="inv-item-detail">Available on request</div></div></div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flat Bar 1/8"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">½×⅝</span><span class="inv-size-tag">3/4"</span><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">3"</span><span class="inv-size-tag">4"</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flat Bar 3/16"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">½×7/16</span><span class="inv-size-tag">3/4"</span><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">3"</span><span class="inv-size-tag">4"</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flat Bar 1/4"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">¾×¼</span><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">3"</span><span class="inv-size-tag">4"</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Twist Bar</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">3/8"</span><span class="inv-size-tag">1/2" Loose</span><span class="inv-size-tag">1/2" Tight</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Solid Square Bar</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">3/8"</span><span class="inv-size-tag">1/2"</span></div></div>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- ANGLE IRON & CHANNEL -->
       <div class="inv-cat reveal reveal-delay-2">
@@ -730,17 +787,26 @@ footer a{color:var(--blue-light);text-decoration:none}
             <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </div>
         </div>
-        <div class="inv-cat-body">
+                <div class="inv-cat-body">
           <div class="inv-items-grid">
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1" × 1" Angle</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">1½" × 1½" Angle</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">2" × 2" Angle</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Unequal Leg Angle</div><div class="inv-item-detail">Various combos</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">C-Channel 2"</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">C-Channel 3"</div></div></div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Angle Iron 1/8"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">½×½×⅝</span><span class="inv-size-tag">3/4"</span><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Angle Iron 3/16"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">3"</span><span class="inv-size-tag">3×2</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Angle Iron 1/4"</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">1"</span><span class="inv-size-tag">1 1/4"</span><span class="inv-size-tag">1 1/2"</span><span class="inv-size-tag">2"</span><span class="inv-size-tag">3"</span><span class="inv-size-tag">3×2</span></div></div>
+            </div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Perforated Sheet</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">3×7</span><span class="inv-size-tag">4×8</span><span class="inv-size-tag">3×7 LO</span></div></div>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- PICKETS & INSERTS -->
       <div class="inv-cat reveal">
@@ -807,16 +873,20 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
           <svg class="inv-cat-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <div class="inv-cat-body">
+                <div class="inv-cat-body">
           <div class="inv-items-grid">
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Cold-Rolled Sheet</div><div class="inv-item-detail">16–10 ga</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Hot-Rolled Plate</div><div class="inv-item-detail">¼" – ½"</div></div></div>
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Flattened Expanded Metal</div></div></div>
-
-            <div class="inv-item"><div class="inv-item-dot"></div><div><div class="inv-item-name">Perforated Sheet</div></div></div>
+            <div class="inv-item has-sizes" onclick="toggleItem(this)">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Sheet Metal</div><div class="inv-item-detail">Click to see sizes</div></div><svg class="inv-item-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="inv-item-sizes"><div class="inv-size-tags"><span class="inv-size-tag">4×8 16g</span><span class="inv-size-tag">4×8 14g</span><span class="inv-size-tag">4×10 18g</span></div></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Expanded Metal</div><div class="inv-item-detail">Flattened only</div></div></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-item-top"><div class="inv-item-dot"></div><div><div class="inv-item-name">Perforated Sheet</div><div class="inv-item-detail">Various sizes</div></div></div>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- GATE & FENCE HARDWARE -->
       <div class="inv-cat reveal">
@@ -1069,6 +1139,11 @@ function toggleCat(header) {
   const isOpen = header.classList.contains('open');
   header.classList.toggle('open', !isOpen);
   body.classList.toggle('open', !isOpen);
+}
+
+// Inline size expand toggle
+function toggleItem(el) {
+  el.classList.toggle('open');
 }
 
 

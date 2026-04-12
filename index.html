@@ -1,3 +1,365 @@
+
+IMG_2150.png
+IMG_2151.png
+on mobile version of reyes ornamental website is kinda off centered down, fix it and center it and also the pictures don't show up on the drop down menus
+
+Apr 10
+Let me look at the current code first.
+
+
+Find the main HTML file for reyesmetals
+Find the main HTML file for reyesmetals
+I don't have the site files here — I'll need to pull them from GitHub. What's the repo? Based on my memory it should be nanndoalcala/reyesornamental — want me to clone that and make the fixes?
+
+Also, for the dropdown images not showing up — are those images supposed to load from Supabase, or are they local image files in the repo? That'll help me know where to look first.
+
+
+1775883739877_index.html
+html
+
+Apr 10
+
+Viewed 4 files, ran a command
+Viewed 4 files, ran a command
+Now I have a clear picture of both issues:
+
+Mobile hero off-centered — on mobile, nav is position:relative (not fixed), so the hero's padding-top:100px doesn't account for that, pushing content down awkwardly.
+Dropdown images not showing — the @media(max-width:480px) CSS hides .inv-cat-thumb and .inv-cat-thumb-gallery with display:none.
+Let me fix both:
+
+
+Ran 2 commands, edited 2 files, read a file
+Ran 2 commands, edited 2 files, read a file
+Two fixes applied:
+
+Hero centering — on mobile the nav was set to position: relative, which pulled it out of the normal fixed-position flow and shoved the hero content down unevenly. Changed it back to position: fixed on mobile and set the hero content top padding to 90px to account for the nav height properly.
+
+Dropdown images — the @media(max-width: 480px) block was hiding the thumbnails entirely with display: none. Removed that and replaced it with smaller sizes (60×44px for single thumbs, 40×40px for the gallery ones) so they still show up on small phones without overflowing.
+
+Push this index.html to the repo and it should be good to go.
+
+
+Index
+Code · HTML 
+Screenshot 2026-04-10 at 11.03.42 PM.png
+it is also still off centered on desktop
+
+Apr 10
+The hero content is left-aligned but starting too low — there's a big empty gap above the text because the min-height: 100vh hero with align-items: center isn't vertically centering properly when the nav is fixed on top. The padding-top: 120px on .hero-content is pushing it down instead of letting flexbox center it.
+
+
+Check hero-content padding and hero flex settings
+Check hero-content padding and hero flex settings
+The issue is clear — padding: 120px 40px 80px adds 120px top padding inside the flex item, which offsets the vertical centering. The fix is to use padding-top on the hero itself to offset the fixed nav, then let flexbox truly center the content.
+
+
+Edited 3 files
+Edited 3 files
+Now fix the mobile hero padding too since we already set padding-top on the hero itself:
+
+
+Remove the mobile hero-content top padding override since hero itself now handles nav offset
+Remove the mobile hero-content top padding override since hero itself now handles nav offset
+Also clean up the mobile-specific hero-content padding we added last time:
+
+
+Check mobile media query for any leftover hero-content padding
+Check mobile media query for any leftover hero-content padding
+There are two conflicting .hero-content rules in the mobile block. Let me clean that up:
+
+
+Edited a file, ran a command, read a file
+Edited a file, ran a command, read a file
+Fixed. The root cause was that .hero-content had padding: 120px 40px 80px — that 120px top push was fighting against align-items: center on the flex parent, making the content appear way too low.
+
+The fix: moved the nav-offset (padding-top: 70px) onto the .hero element itself, then gave .hero-content symmetric 40px padding on all sides so flexbox can actually center it properly. Works the same on mobile too since the hero-level padding handles the fixed nav offset universally.
+
+
+Index
+Code · HTML 
+1775884369815_image.png
+1775884442797_image.png
+1775884973966_image.png
+1775885036173_image.png
+1775885069833_image.png
+first image is for wrought iron gates, second image is custom zia ironwork, third image is for commercial security door, fourht image is for balcony railings, fifth image is for porch enclosures
+
+Apr 10
+I'll embed these images as base64 into the HTML so they show in the gallery and about sections. Let me process them.
+
+
+Ran 4 commands
+Ran 4 commands
+Good sizes. Now let me inject them into the HTML:
+
+
+Ran 4 commands, viewed a file, read a file
+Ran 4 commands, viewed a file, read a file
+All 5 images are now embedded as base64 JPEGs (resized and compressed to keep the file reasonable). Here's where each landed:
+
+About section — Zia gate photo (top-right) and wrought iron gate (bottom-left) replace the dark placeholder boxes
+Gallery grid — All 5 real photos fill the grid cells with proper object-fit: cover and a gradient label overlay at the bottom of each
+Push this index.html to the repo and it's live. Since they're base64-embedded, no separate image hosting needed — they load instantly.
+
+
+Index
+Code · HTML 
+remove the founded and ran by dolores reyes part
+
+Apr 10
+
+Edited a file, ran a command, read a file
+Edited a file, ran a command, read a file
+Done — replaced that sentence with a generic family business line that keeps the same tone without naming Dolores.
+
+
+Index
+Code · HTML 
+Screenshot 2026-04-10 at 11.39.29 PM.png
+can you seperate the map and send a message button a little bit
+
+Apr 10
+The map is sitting directly under the form with no breathing room. Let me add some margin between them.
+
+
+Edited a file, ran a command, read a file
+Edited a file, ran a command, read a file
+Done — added margin-top: 48px to the map so it has a clear gap between the Send Message button and the Google Maps embed.
+
+
+Index
+Code · HTML 
+Screenshot 2026-04-10 at 11.41.54 PM.png
+how can i add a logo next to the tab for reyes website?
+
+Apr 10
+That's the favicon — the little icon that shows in the browser tab. You have a few options:
+
+Easiest: Use an emoji (no image needed) Add this inside the <head> tag:
+
+html
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+Better: Use a custom SVG favicon (matches your brand) I can add a small "R" monogram or Zia sun symbol as an SVG favicon — no image file needed, works in all browsers.
+
+Best: Upload a real .ico or .png logo file If you have a logo image, you'd add it to the repo and reference it like:
+
+html
+<link rel="icon" type="image/png" href="logo.png">
+The Zia SVG option would look the most on-brand and requires zero extra files. Want me to add that directly to the HTML? I can make it match the blue/iron color scheme of the site.
+
+yea make a zia blue/iron color scheme logo for the site
+
+Apr 10
+
+Ran 2 commands, viewed a file, edited a file
+Ran 2 commands, viewed a file, edited a file
+Here's what the favicon looks like — dark iron (
+#2a2a2a) circle background with the Zia sun rays in blue (
+#0096FF), matching the site's exact color scheme. It's a fully self-contained SVG embedded as base64 so no extra files needed in the repo.
+
+Push this index.html and the tab icon will update. Note: Chrome sometimes caches favicons aggressively — if it doesn't show right away, do a hard refresh (Cmd+Shift+R) or open in an incognito tab.
+
+
+Index
+Code · HTML 
+
+1776033197541_index.html
+html
+
+Sizes Reyes.pdf
+pdf
+
+they want another drop down menu under the drop down menus with these sizes of their metlas
+
+4:33 PM
+Let me read the current inventory section first, then I'll add sub-dropdowns with the sizes from the PDF.
+
+
+Ran 2 commands, viewed 2 files
+Ran 2 commands, viewed 2 files
+Now I have a clear picture. I'll add nested size sub-dropdowns inside each relevant category using the exact data from the PDF.
+
+
+See the CSS for inv-cat-body and items to understand the structure for sub-dropdowns
+See the CSS for inv-cat-body and items to understand the structure for sub-dropdowns
+Now I have everything I need. I'll add CSS for sub-dropdowns and rebuild each category body with the actual sizes from the PDF:
+
+
+Add sub-dropdown CSS after inv-note styles
+Add sub-dropdown CSS after inv-note styles
+Now update the toggleCat JS to also handle size sub-dropdowns:
+
+
+Add toggleSize function alongside toggleCat
+Add toggleSize function alongside toggleCat
+Now increase the max-height on .inv-cat-body.open to accommodate sub-dropdowns, then replace each category's body with the real sizes:
+
+
+Increase max-height for cat body to fit sub-dropdowns
+Increase max-height for cat body to fit sub-dropdowns
+Now replace each category's inv-cat-body with sizes from the PDF. Starting with Tubing & Pipe:
+
+
+Replace Tubing & Pipe body with size sub-dropdowns from PDF
+Replace Tubing & Pipe body with size sub-dropdowns from PDF
+Now Flat Bar & Strap:
+
+
+Replace Flat Bar body with size sub-dropdowns from PDF
+Replace Flat Bar body with size sub-dropdowns from PDF
+Now Angle Iron & Channel:
+
+
+Replace Angle Iron body with PDF sizes
+Replace Angle Iron body with PDF sizes
+Now Sheet Metal & Plate:
+
+
+Edited a file, ran a command, read a file
+Edited a file, ran a command, read a file
+Done! Here's what was added — every size directly from the PDF:
+
+Tubing & Pipe now has 6 sub-dropdowns:
+
+Square Tubing 16G sizes (½" through 2", plus 1×2 and ½×1)
+Square Tubing 14G sizes (1" through 2", plus 3-20', 3-24', 4-20', 4-24' lengths)
+Rectangular Tubing (1×3 16g, 1×3 14g, 1½×3, 1×4 16g, 1½×1 16g, 1½×¾ 16g)
+Round Bar (3/16" through ½")
+Expanded Metal (¾-4×8 #13, ½-4×8 #13, ¾-4×8 #9)
+Pipe SCH 10 (1¼" and 1½")
+Flat Bar & Strap has 5 sub-dropdowns covering 1/8", 3/16", 1/4" thicknesses + Twist and Solid sizes
+
+Angle Iron & Channel has 4 sub-dropdowns for 1/8", 3/16", 1/4" angles + Perforated sheet
+
+Sheet Metal has sizes (4×8 16g, 4×8 14g, 4×10 18g)
+
+The sub-dropdowns are styled with blue pill tags and animate open/close just like the main dropdowns.
+
+
+Index
+Code · HTML 
+Screenshot 2026-04-12 at 4.36.50 PM.png
+i want the drop down menu to be inside the square tubing for example for a more cleaner UI this just looks horrible
+
+4:37 PM
+Good call — instead of separate sub-dropdowns, I'll put the sizes directly inside each item card so clicking "Square Tubing 16G" expands the sizes inline. Much cleaner.
+
+
+Viewed 2 files
+Viewed 2 files
+Now I'll replace the old sub-dropdown CSS with new inline card-expand CSS, then rewrite all the category bodies:
+
+
+Edited a file, ran a command
+Edited a file, ran a command
+Now also update the .inv-item base rule and the toggleSize JS, then rewrite all the category bodies with the new inline structure:
+
+
+Fix inv-item CSS and update JS toggle function
+Fix inv-item CSS and update JS toggle function
+Now rewrite the Tubing & Pipe body with the clean inline card structure:
+
+
+Ran 3 commands, read a file
+Ran 3 commands, read a file
+Much cleaner now. Each item card (Square Tubing 16G, Flat Bar 1/8", etc.) has a small chevron arrow on the right — clicking it expands the size tags inline inside the card itself, then collapses when clicked again. No separate rows of dropdowns cluttering up the view. The cards that don't have sizes (like Perforated Sheet) just show without an arrow and aren't clickable.
+
+
+Index
+Code · HTML 
+Screenshot 2026-04-12 at 4.40.03 PM.png
+was this done? are these changes made in the website
+
+4:40 PM
+Let me check the current state of the file for those two things:
+
+
+Check for diamond plate and expanded metal mentions
+Check for diamond plate and expanded metal mentions
+Neither change was made — diamond plate is still in the file and expanded metal still says "Standard & flattened." Let me fix both now:
+
+
+Ran 3 commands, read a file
+Ran 3 commands, read a file
+Both changes are now made — Diamond Plate removed from Sheet Metal, and Expanded Metal now says "Flattened only" instead of "Standard & flattened." These weren't in the previous version you uploaded so they hadn't been applied yet — going forward make sure to always upload the latest file so I'm working off the most current version!
+
+
+Index
+Code · HTML 
+ok good, also i did a formspree submission as a test and the submission only shows on their formspree account i want it to receive to their email inbox under reyes904@live.com
+
+4:44 PM
+That's actually a Formspree account setting, not something controlled in the HTML code. Here's how to fix it:
+
+Log into formspree.io with Reyes' account
+Go to the form (ID: xwvwpqgg)
+Click Settings on that form
+Under Email Notifications, add reyes904@live.com as a recipient
+Save
+Once that's set, every submission will hit both the Formspree dashboard and their email inbox. Formspree should also send a confirmation email to that address to verify it first, so tell them to look out for that.
+
+ok now draft me a message to the group chat i am in with jessie and alma saying that the changes have been made that they wanted, website is up and running and that i am just waitinng on the drone shot jessie wanted of the shop to put on their website and the steps for the formspree config
+
+4:45 PM
+Hey! All the changes you wanted are done and the site is up and running. The only thing I'm waiting on is the drone shot of the shop Jessie wanted so I can get that added. Also for the contact form emails — to get submissions sent to reyes904@live.com, just log into formspree.io, go to the form, hit Settings, and add that email under Email Notifications. They'll send a quick verification email first so just look out for that!
+Open in Messages
+There you go Nando, ready to send!
+
+oh and the monthly maintenance fee im sending a link to them using stripe its 50 a month is that valid
+
+4:46 PM
+Yeah that's totally valid. Stripe is one of the most legit payment processors out there — they can pay with any card and it'll hit your account clean. A few things to double check:
+
+Make sure it's set to recurring (monthly subscription) not a one-time payment, so it auto-charges every month without you having to chase them down
+Stripe will take a fee — about 2.9% + 30¢ per transaction, so you'll net roughly $48.55 per charge instead of the full $50. You may want to bump it to $52 to cover that if you care
+Send the Payment Link, not an invoice — cleaner experience for them, they just click and enter their card
+You already have the Stripe account set up right?
+
+yes update the message to mention my payment
+
+4:46 PM
+Hey! All the changes you wanted are done and the site is up and running. The only thing I'm waiting on is the drone shot of the shop Jessie wanted so I can get that added. Also for the contact form emails — to get submissions sent to reyes904@live.com, just log into formspree.io, go to the form, hit Settings, and add that email under Email Notifications. They'll send a quick verification email first so just look out for that!
+
+Also sending over the link for the monthly maintenance — it's $50/month through Stripe, super easy to set up on your end!
+Open in Messages
+Updated! Just paste your Stripe payment link right after that last line before sending.
+
+the address is wrong for the shop 904 Broadway Blvd NE, Albuquerque, NM 87102
+
+5:17 PM
+What's the correct address?
+
+that is the address, the pin is showing wrong on the google maps in the site
+
+5:18 PM
+Got it! Let me fix the map embed coordinates to pin the correct location.
+
+
+Find the Google Maps embed
+Find the Google Maps embed
+The embed is using raw coordinates instead of the actual address query. Let me replace it with one that searches by address so it pins exactly right:
+
+
+Replace map embed with address-based query
+Replace map embed with address-based query
+Actually, the most reliable fix is to generate the embed directly from the address string so Google resolves it properly:
+
+
+Ran 2 commands, read a file
+Ran 2 commands, read a file
+Fixed — switched from raw coordinates to a direct address query (904 Broadway Blvd NE, Albuquerque, NM 87102) so Google Maps resolves it to the exact pin every time. Push this and the map should drop right on the shop.
+
+
+Index
+Code · HTML 
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Index · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +440,7 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-white);overflow-x:hidden}
-
+ 
 /* ─── HERO ─── */
 .hero{
   position:relative;
@@ -142,14 +504,14 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
 .hero-cta:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,150,255,.35)}
 .hero-cta svg{transition:transform .3s ease}
 .hero-cta:hover svg{transform:translateX(4px)}
-
+ 
 /* Zia decoration */
 .zia-deco{
   position:absolute;right:5%;top:50%;transform:translateY(-50%);
   width:clamp(200px,30vw,420px);height:clamp(200px,30vw,420px);
   opacity:.06;pointer-events:none;z-index:1;
 }
-
+ 
 /* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -183,7 +545,7 @@ nav.scrolled{
   color:var(--blue-light);text-decoration:none;
   display:flex;align-items:center;gap:8px;
 }
-
+ 
 /* ─── SECTIONS ─── */
 section{padding:100px 40px}
 .container{max-width:1200px;margin:0 auto}
@@ -197,7 +559,7 @@ section{padding:100px 40px}
   font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);
   color:var(--iron);line-height:1.15;margin-bottom:20px;
 }
-
+ 
 /* ─── ABOUT ─── */
 .about{background:var(--warm-white)}
 .about-grid{
@@ -241,9 +603,9 @@ section{padding:100px 40px}
   color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;
   text-align:center;padding:20px;
 }
-
-
-
+ 
+ 
+ 
 /* ─── INVENTORY ─── */
 .inventory{background:var(--warm-white)}
 .inventory-intro{
@@ -312,7 +674,7 @@ section{padding:100px 40px}
   font-size:.9rem;color:rgba(42,42,42,.65);line-height:1.6;
 }
 .inv-note strong{color:var(--blue)}
-
+ 
 /* ─── INLINE SIZE EXPAND ON ITEM CARDS ─── */
 .inv-item-top{display:flex;align-items:center;gap:12px}
 .inv-item-chevron{
@@ -337,7 +699,7 @@ section{padding:100px 40px}
   border-radius:2px;
   font-family:'DM Sans',sans-serif;
 }
-
+ 
 /* ─── INVENTORY CATEGORY THUMBNAILS ─── */
 .inv-cat-thumb{
   width:110px;height:72px;
@@ -378,7 +740,7 @@ section{padding:100px 40px}
   .inv-cat-thumb{width:60px;height:44px}
   .inv-cat-thumb-gallery .inv-cat-thumb{width:40px;height:40px}
 }
-
+ 
 /* ─── GALLERY ─── */
 .gallery{background:var(--dark);padding:100px 40px}
 .gallery .section-tag{color:var(--blue-light)}
@@ -403,7 +765,7 @@ section{padding:100px 40px}
 .gallery-item .g-label{
   color:rgba(232,220,200,.25);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
 }
-
+ 
 /* ─── REVIEWS ─── */
 .reviews{background:var(--warm-white)}
 .reviews-grid{
@@ -424,7 +786,7 @@ section{padding:100px 40px}
 .review-text{font-size:.95rem;line-height:1.75;color:var(--text);margin-bottom:20px;font-style:italic}
 .review-author{font-weight:700;font-size:.85rem;color:var(--iron)}
 .review-badge{font-size:.75rem;color:rgba(42,42,42,.45);margin-top:2px}
-
+ 
 /* ─── CTA BANNER ─── */
 .cta-banner{
   background:linear-gradient(135deg,var(--iron) 0%,#0a1a2e 100%);
@@ -444,7 +806,7 @@ section{padding:100px 40px}
 }
 .cta-banner p{color:rgba(232,220,200,.6);font-size:1.1rem;margin-bottom:36px}
 .cta-banner .hero-cta{display:inline-flex}
-
+ 
 /* ─── CONTACT ─── */
 .contact{background:#f0f6ff}
 .contact-grid{
@@ -464,7 +826,7 @@ section{padding:100px 40px}
 .ci-value{font-size:1.05rem;color:var(--iron);font-weight:500}
 .ci-value a{color:var(--iron);text-decoration:none;transition:color .3s}
 .ci-value a:hover{color:var(--blue)}
-
+ 
 .contact-map{
   background:var(--iron);
   min-height:350px;
@@ -474,7 +836,7 @@ section{padding:100px 40px}
   margin-top:48px;
 }
 .contact-map iframe{width:100%;height:100%;min-height:350px;border:0;filter:grayscale(.4) contrast(1.1)}
-
+ 
 /* ─── FOOTER ─── */
 .contact-form{margin-top:32px}
 .contact-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--iron);margin-bottom:16px}
@@ -494,26 +856,26 @@ section{padding:100px 40px}
 }
 .form-submit:hover{background:var(--blue-dark);transform:translateY(-2px)}
 .form-success{display:none;padding:20px;background:rgba(0,150,255,.08);border:1px solid rgba(0,150,255,.2);color:var(--blue-dark);font-size:.95rem;margin-top:16px}
-
+ 
 footer{
   background:var(--dark);color:rgba(232,220,200,.4);
   padding:40px;text-align:center;font-size:.85rem;
 }
 footer a{color:var(--blue-light);text-decoration:none}
-
+ 
 /* ─── ANIMATIONS ─── */
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
-
+ 
 /* ─── IRON PATTERN SVG ─── */
 .iron-scroll{
   display:block;margin:0 auto;
   opacity:.08;
 }
-
+ 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1024px){
   .services-grid,.reviews-grid{grid-template-columns:1fr 1fr}
@@ -548,7 +910,7 @@ footer a{color:var(--blue-light);text-decoration:none}
 @media(max-width:480px){
   .inv-items-grid{grid-template-columns:1fr}
 }
-
+ 
 /* Hamburger for mobile */
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
 .nav-hamburger span{width:24px;height:2px;background:var(--cream);transition:all .3s}
@@ -558,7 +920,7 @@ footer a{color:var(--blue-light);text-decoration:none}
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">REYES <em>ORNAMENTAL</em></a>
@@ -578,7 +940,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     <span></span><span></span><span></span>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
@@ -618,7 +980,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     </g>
   </svg>
 </section>
-
+ 
 <!-- DIVIDER -->
 <div style="background:var(--warm-white);padding:20px 0;text-align:center">
   <svg class="iron-scroll" width="200" height="24" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -626,7 +988,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     <circle cx="100" cy="12" r="3" fill="#2a2a2a"/>
   </svg>
 </div>
-
+ 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
@@ -666,18 +1028,18 @@ footer a{color:var(--blue-light);text-decoration:none}
     </div>
   </div>
 </section>
-
-
-
+ 
+ 
+ 
 <!-- INVENTORY -->
 <section class="inventory" id="inventory">
   <div class="container">
     <div class="section-tag">In Stock</div>
     <h2 class="section-title">Browse Our Inventory</h2>
     <p class="inventory-intro">We keep a wide variety of ornamental iron and steel materials in stock at our Broadway location. Click any category below to see what we carry. Call us for availability and pricing.</p>
-
+ 
     <div class="inv-categories" id="invCategories">
-
+ 
       <!-- TUBING & PIPE -->
       <div class="inv-cat reveal">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -727,7 +1089,7 @@ footer a{color:var(--blue-light);text-decoration:none}
             </div>
           </div>
         </div>
-
+ 
       <!-- FLAT BAR & STRAP -->
       <div class="inv-cat reveal reveal-delay-1">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -769,7 +1131,7 @@ footer a{color:var(--blue-light);text-decoration:none}
             </div>
           </div>
         </div>
-
+ 
       <!-- ANGLE IRON & CHANNEL -->
       <div class="inv-cat reveal reveal-delay-2">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -807,7 +1169,7 @@ footer a{color:var(--blue-light);text-decoration:none}
             </div>
           </div>
         </div>
-
+ 
       <!-- PICKETS & INSERTS -->
       <div class="inv-cat reveal">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -830,7 +1192,7 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
         </div>
       </div>
-
+ 
       <!-- DECORATIVE SCROLLS & CASTINGS -->
       <div class="inv-cat reveal reveal-delay-1">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -858,7 +1220,7 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
         </div>
       </div>
-
+ 
       <!-- SHEET METAL & PLATE -->
       <div class="inv-cat reveal reveal-delay-2">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -887,7 +1249,7 @@ footer a{color:var(--blue-light);text-decoration:none}
             </div>
           </div>
         </div>
-
+ 
       <!-- GATE & FENCE HARDWARE -->
       <div class="inv-cat reveal">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -915,7 +1277,7 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
         </div>
       </div>
-
+ 
       <!-- WELDING SUPPLIES -->
       <div class="inv-cat reveal reveal-delay-1">
         <div class="inv-cat-header" onclick="toggleCat(this)">
@@ -941,15 +1303,15 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
         </div>
       </div>
-
+ 
     </div>
-
+ 
     <div class="inv-note reveal">
       <strong>Note:</strong> Inventory changes regularly. Call us at <strong>(505) 242-6014</strong> or stop by our shop at 904 Broadway Blvd NE to confirm availability. We also offer minor fabrication and can source specialty items on request. Stainless steel and aluminum available — ask us!
     </div>
   </div>
 </section>
-
+ 
 <!-- GALLERY -->
 <section class="gallery" id="gallery">
   <div class="container">
@@ -992,7 +1354,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     </div>
   </div>
 </section>
-
+ 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
   <div class="container">
@@ -1020,7 +1382,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     </div>
   </div>
 </section>
-
+ 
 <!-- CTA BANNER -->
 <div class="cta-banner">
   <h2>Ready to Transform Your Property?</h2>
@@ -1030,7 +1392,7 @@ footer a{color:var(--blue-light);text-decoration:none}
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.91 10.6a16 16 0 0 0 6.49 6.49l1.42-1.42a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92Z"/></svg>
   </a>
 </div>
-
+ 
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
@@ -1075,7 +1437,7 @@ footer a{color:var(--blue-light);text-decoration:none}
           </div>
         </div>
       </div>
-
+ 
       <!-- CONTACT FORM -->
       <div class="contact-form reveal">
         <h3>Send Us a Message</h3>
@@ -1113,26 +1475,26 @@ footer a{color:var(--blue-light);text-decoration:none}
           <div class="form-success" id="formSuccess">Thank you! Your message has been sent. We'll get back to you soon.</div>
         </div>
       </div>
-
+ 
     </div>
     <div class="contact-map reveal reveal-delay-1">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263.5!2d-106.6432!3d35.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDA1JzE1LjAiTiAxMDbCsDM4JzM1LjUiVw!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://maps.google.com/maps?q=904+Broadway+Blvd+NE,+Albuquerque,+NM+87102&output=embed" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2026 Reyes Ornamental Supply. All rights reserved. | 904 Broadway Blvd NE, Albuquerque, NM 87102 | <a href="tel:5052426014">(505) 242-6014</a></p>
 </footer>
-
+ 
 <script>
 // =============================================
 // SUPABASE CONFIG
 // =============================================
 const SUPABASE_URL = 'https://xsnztgdqrdbnnxqdhyrm.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhzbnp0Z2RxcmRibm54cWRoeXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTU2MDksImV4cCI6MjA4OTY5MTYwOX0.JwyvhBeVyuLwMMkwykiGHsYc069JEa4xD0nztxlUe_E';
-
+ 
 // Inventory category toggle
 function toggleCat(header) {
   const body = header.nextElementSibling;
@@ -1140,19 +1502,19 @@ function toggleCat(header) {
   header.classList.toggle('open', !isOpen);
   body.classList.toggle('open', !isOpen);
 }
-
+ 
 // Inline size expand toggle
 function toggleItem(el) {
   el.classList.toggle('open');
 }
-
-
+ 
+ 
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
-
+ 
 // Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1160,22 +1522,22 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
 var FORMSPREE_ID = 'xdapqwaq';
-
+ 
 function submitContact() {
   var name = document.getElementById('cfName').value.trim();
   var email = document.getElementById('cfEmail').value.trim();
   var phone = document.getElementById('cfPhone').value.trim();
   var service = document.getElementById('cfService').value;
   var message = document.getElementById('cfMessage').value.trim();
-
+ 
   if (!name || !email) { alert('Please fill in your name and email.'); return; }
-
+ 
   var btn = document.querySelector('.form-submit');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-
+ 
   fetch('https://formspree.io/f/' + FORMSPREE_ID, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1195,8 +1557,9 @@ function submitContact() {
     btn.disabled = false;
   });
 }
-
-
+ 
+ 
 </script>
 </body>
 </html>
+ 

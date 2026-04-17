@@ -90,16 +90,17 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
   padding-top:70px;
   box-sizing:border-box;
 }
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.03) 59px,rgba(255,255,255,.03) 60px),
-    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.03) 59px,rgba(255,255,255,.03) 60px);
-  pointer-events:none;
+.hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  opacity:.45;
 }
 .hero::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 50%,rgba(0,150,255,.12),transparent 70%);
+  background:linear-gradient(to right, rgba(26,26,26,.82) 55%, rgba(26,26,26,.35) 100%);
+  z-index:1;
   pointer-events:none;
 }
 .hero-content{
@@ -107,6 +108,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm-wh
   max-width:1200px;margin:0 auto;padding:40px 40px;
   width:100%;
 }
+
 .hero-tag{
   font-family:'DM Sans',sans-serif;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;
   color:var(--blue-light);margin-bottom:24px;
@@ -404,6 +406,55 @@ section{padding:100px 40px}
   color:rgba(232,220,200,.25);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
 }
 
+/* ─── DRONE VIDEO ─── */
+.drone-video-section{
+  background:var(--iron);
+  padding:100px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.drone-video-section::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.02) 59px,rgba(255,255,255,.02) 60px),
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.02) 59px,rgba(255,255,255,.02) 60px);
+  pointer-events:none;
+}
+.drone-video-section .section-tag{color:var(--blue-light)}
+.drone-video-section .section-title{color:var(--cream)}
+.drone-video-desc{
+  color:rgba(232,220,200,.6);font-size:1.05rem;
+  max-width:560px;line-height:1.7;margin-bottom:48px;
+}
+.drone-video-wrapper{
+  position:relative;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  aspect-ratio:16/9;
+  border:1px solid rgba(0,150,255,.2);
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+  overflow:hidden;
+  background:#111;
+}
+.drone-video-wrapper video{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+.drone-video-wrapper::after{
+  content:'';
+  position:absolute;inset:0;
+  border:1px solid rgba(0,150,255,.15);
+  pointer-events:none;
+}
+.drone-video-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:24px;
+  font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(232,220,200,.4);
+}
+.drone-video-badge svg{color:var(--blue-light)}
+
 /* ─── REVIEWS ─── */
 .reviews{background:var(--warm-white)}
 .reviews-grid{
@@ -581,6 +632,9 @@ footer a{color:var(--blue-light);text-decoration:none}
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="assets/videos/aerial.mp4" type="video/mp4">
+  </video>
   <div class="hero-content">
     <div class="hero-tag">Albuquerque, New Mexico</div>
     <h1>
